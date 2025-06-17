@@ -11,6 +11,6 @@ python-dateutil==2.8.2
 pytz==2024.1
 chromadb==0.4.22
 reportlab==4.1.0
-pandas==2.0.0
+pandas==1.5.3
+numpy==1.24.3
 plotly==5.18.0
-numpy==1.26.4
