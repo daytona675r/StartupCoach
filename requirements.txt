@@ -12,4 +12,5 @@ reportlab
 pandas
 numpy
 plotly
+pysqlite3-binary
 protobuf==3.20.*
