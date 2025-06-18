@@ -12,3 +12,4 @@ reportlab
 pandas
 numpy
 plotly
+protobuf==3.20.*
