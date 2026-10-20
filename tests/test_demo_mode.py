@@ -1,4 +1,4 @@
-from demo_mode import DEMO_CANVAS, DEMO_CHAT, DEMO_NOTICE, DEMO_PITCH
+from demo_mode import DEMO_CANVAS, DEMO_CHAT, DEMO_NOTICE, DEMO_PITCH, DEMO_SCENARIOS
 
 
 def test_demo_is_deterministic_and_explicit():
@@ -6,3 +6,4 @@ def test_demo_is_deterministic_and_explicit():
     assert DEMO_CHAT["answer"]
     assert set(DEMO_CANVAS) == {"Problem", "Solution", "Target group"}
     assert len(DEMO_PITCH) == 3
+    assert len(DEMO_SCENARIOS) == 3

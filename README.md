@@ -2,7 +2,7 @@
 
 A powerful AI-powered startup mentoring application that provides comprehensive support for entrepreneurs through intelligent chat, business tools, and analytics.
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B)](https://streamlit.io/)
 [![LangChain](https://img.shields.io/badge/LangChain-0.1.0-00A67E)](https://python.langchain.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT4-412991)](https://openai.com/)
@@ -40,7 +40,7 @@ A powerful AI-powered startup mentoring application that provides comprehensive 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.9 or higher
+- Python 3.11–3.13
 - OpenAI API key
 - Internet connection
 
@@ -98,8 +98,8 @@ The application is built using a modular architecture:
 The application can be configured through environment variables:
 
 - `OPENAI_API_KEY`: Your OpenAI API key
-- `MODEL_NAME`: The OpenAI model to use (default: gpt-4)
-- `TEMPERATURE`: Model temperature setting (default: 0.7)
+- Provider and model settings are configured in the application modules; demo
+  mode does not read or expose provider credentials.
 
 ## 🌐 Multi-language Support
 

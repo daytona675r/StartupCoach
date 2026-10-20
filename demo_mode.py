@@ -7,6 +7,21 @@ from typing import Final
 
 DEMO_NOTICE: Final[str] = "Demo mode: replayed example output. No live model or paid API call is made."
 
+DEMO_SCENARIOS: Final[dict[str, dict[str, str]]] = {
+    "B2B validation": {
+        "question": "How should a small B2B startup validate its first target segment?",
+        "answer": "Start with one narrowly defined segment, test the problem through structured interviews, and record evidence before expanding the offer.",
+    },
+    "Local services": {
+        "question": "How can a local service test demand before building a full product?",
+        "answer": "Offer a narrow manual pilot, define a measurable outcome, and use paid commitments and repeat usage as evidence before automating delivery.",
+    },
+    "Developer tool": {
+        "question": "What should a developer-tool founder learn from early users?",
+        "answer": "Observe the workflow around the tool, identify the costly failure it prevents, and distinguish repeated usage from curiosity during demos.",
+    },
+}
+
 DEMO_CHAT = {
     "question": "How should a small B2B startup validate its first target segment?",
     "answer": "Start with one narrowly defined segment, test the problem through structured interviews, and record evidence before expanding the offer.",
@@ -31,10 +46,13 @@ def render_demo(st) -> None:
     st.info(DEMO_NOTICE)
     st.caption("Representative sample data for portfolio review; it is not a live AI session.")
 
+    scenario = st.selectbox("Replay scenario", list(DEMO_SCENARIOS))
+    selected = DEMO_SCENARIOS[scenario]
+
     chat, tools, analytics = st.tabs(["Mentor chat", "Startup tools", "Analytics"])
     with chat:
-        st.markdown(f"**Example question**  \n{DEMO_CHAT['question']}")
-        st.markdown(f"**Replayed mentor response**  \n{DEMO_CHAT['answer']}")
+        st.markdown(f"**Example question**  \n{selected['question']}")
+        st.markdown(f"**Replayed mentor response**  \n{selected['answer']}")
         st.caption("Source context: simulated startup-validation notes")
     with tools:
         st.subheader("Business Model Canvas · example")
