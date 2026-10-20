@@ -21,3 +21,4 @@ jobs:
       - run: ruff format --check demo_mode.py tests
       - run: python -m pytest -q tests
       - run: python -m py_compile app.py demo_mode.py
+      - run: python -c "import workflow_manager, chat_manager, tools_manager, translations; print('maintained modules imported')"

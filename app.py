@@ -1,5 +1,6 @@
-import streamlit as st
 import os
+
+import streamlit as st
 
 if os.getenv("DEMO_MODE", "").lower() in {"1", "true", "yes", "on"}:
     from demo_mode import render_demo
@@ -16,7 +17,7 @@ from tools_manager import (
     ToolsManager
 )
 from langchain_core.messages import HumanMessage
-import os
+from langchain_openai import ChatOpenAI
 from urllib.parse import urlparse
 from help_guide import (
     display_rag_visualization,
@@ -77,18 +78,26 @@ chat_manager = ChatManager()
 workflow = create_workflow()
 
 # Initialize the tool-specific LLM
-tool_llm = ToolLLM()
+tool_llm = None
 
 # Initialize the tools manager
-tools_manager = ToolsManager()
+tools_manager = None
 
 # Initialize token tracker
 token_tracker = TokenTracker()
+
+def get_chat_llm():
+    """Create the provider lazily so imports and demo mode need no API key."""
+    return ChatOpenAI(model="gpt-4", temperature=0.2, api_key=os.getenv("OPENAI_API_KEY"))
+
 
 def process_tool_request(user_input: str) -> str:
     """
     Process tool-specific requests using the dedicated GPT-3.5 model.
     """
+    global tool_llm
+    if tool_llm is None:
+        tool_llm = ToolLLM()
     return tool_llm.process_tool_request(user_input)
 
 def display_token_usage():
@@ -134,7 +143,7 @@ def chat(user_input: str, chat_history: list) -> tuple:
         token_tracker.track_usage("gpt-3.5-turbo", user_input, response)
     else:
         # Use the main LLM for general conversation
-        response = llm.invoke(user_input)
+        response = get_chat_llm().invoke(user_input)
         # Track token usage for general conversation
         token_tracker.track_usage("gpt-4", user_input, response)
     
