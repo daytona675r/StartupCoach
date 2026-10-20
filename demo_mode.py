@@ -1,9 +1,8 @@
 """Deterministic, credential-free Streamlit presentation for portfolio review."""
 
 from __future__ import annotations
+
 from typing import Final
-
-
 DEMO_NOTICE: Final[str] = "Demo mode: replayed example output. No live model or paid API call is made."
 
 DEMO_SCENARIOS: Final[dict[str, dict[str, str]]] = {
