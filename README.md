@@ -1,4 +1,4 @@
-# 🚀 Startup Mentor
+# 🚀 StartupCoach
 
 A powerful AI-powered startup mentoring application that provides comprehensive support for entrepreneurs through intelligent chat, business tools, and analytics.
 
@@ -48,8 +48,8 @@ A powerful AI-powered startup mentoring application that provides comprehensive 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/startup-mentor.git
-cd startup-mentor
+git clone https://github.com/daytona675r/StartupCoach.git
+cd StartupCoach
 ```
 
 2. Install dependencies:
@@ -57,7 +57,7 @@ cd startup-mentor
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables:
+3. Set up environment variables for real mode:
 ```bash
 # Create a .env file
 OPENAI_API_KEY=your_api_key_here
@@ -67,6 +67,19 @@ OPENAI_API_KEY=your_api_key_here
 ```bash
 streamlit run app.py
 ```
+
+### Credential-free demo mode
+
+For a recruiter-friendly local preview, run the deterministic replay UI:
+
+```bash
+DEMO_MODE=1 streamlit run app.py
+```
+
+Demo mode uses labelled sample outputs for mentor chat, the Business Model
+Canvas, pitch-deck structure and analytics. It performs no OpenAI call and
+reports example token/cost values. Real mode remains local/private and requires
+`OPENAI_API_KEY`.
 
 ## 🏗️ Architecture
 
@@ -131,4 +144,4 @@ For support, please open an issue in the GitHub repository or contact the mainta
 
 ---
 
-Made with ❤️ for entrepreneurs and startup enthusiasts 
+Made with ❤️ for entrepreneurs and startup enthusiasts

@@ -1,4 +1,12 @@
 import streamlit as st
+import os
+
+if os.getenv("DEMO_MODE", "").lower() in {"1", "true", "yes", "on"}:
+    from demo_mode import render_demo
+
+    render_demo(st)
+    st.stop()
+
 from chat_manager import ChatManager
 from workflow_manager import create_workflow
 from tools_manager import (
