@@ -92,8 +92,8 @@ class ToolsManager:
         try:
             result = chain.invoke(input_data)
             return result
-        except Exception as e:
-            return f"Error executing {tool_name}: {str(e)}"
+        except Exception as e:  # noqa: BLE001 - provider boundary returns a user-facing error
+            return f"Error executing {tool_name}: {e!s}"
     
     def display_tool_interface(self, tool_name: str):
         """

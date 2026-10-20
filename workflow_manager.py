@@ -1,13 +1,14 @@
-__import__('pysqlite3')
 import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
-from langgraph.graph import StateGraph
-from typing import TypedDict, Dict, Any, List
-from langchain_core.messages import AIMessage, BaseMessage
+import pysqlite3
 import streamlit as st
+from typing import Any, TypedDict
+
+from langchain_core.messages import AIMessage, BaseMessage
+from langchain_community.vectorstores import Chroma
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langgraph.graph import StateGraph
+
+sys.modules["sqlite3"] = pysqlite3
 
 @st.cache_resource(show_spinner=False)
 def load_retriever():
@@ -32,7 +33,7 @@ def create_workflow():
         response = llm.invoke(prompt)
         return response.content.strip().lower() == 'yes'
     
-    def retrieve_documents(state: Dict[str, Any]) -> Dict[str, Any]:
+    def retrieve_documents(state: dict[str, Any]) -> dict[str, Any]:
         messages = state["messages"]
         last_message = messages[-1]
         
@@ -51,7 +52,7 @@ def create_workflow():
             "is_startup_related": True
         }
     
-    def generate_response(state: Dict[str, Any]) -> Dict[str, Any]:
+    def generate_response(state: dict[str, Any]) -> dict[str, Any]:
         messages = state["messages"]
         context = state.get("context", [])
         is_startup_related = state.get("is_startup_related", True)
@@ -86,8 +87,8 @@ def create_workflow():
         }
     
     class WorkflowState(TypedDict):
-        messages: List[BaseMessage]
-        context: List[Any]
+        messages: list[BaseMessage]
+        context: list[Any]
         is_startup_related: bool
     
     workflow = StateGraph(WorkflowState)
