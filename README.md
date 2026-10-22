@@ -3,7 +3,7 @@
 StartupCoach is a Turing College AI Engineering portfolio project exploring
 credential-aware startup mentoring workflows and deterministic local demos.
 
-A powerful AI-powered startup mentoring application that provides comprehensive support for entrepreneurs through intelligent chat, business tools, and analytics.
+StartupCoach is a local startup mentoring application combining conversational guidance, business tools and usage analytics.
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.32.0-FF4B4B)](https://streamlit.io/)
