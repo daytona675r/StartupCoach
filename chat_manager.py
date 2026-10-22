@@ -1,10 +1,13 @@
-import streamlit as st
 import json
-from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
-from typing import Sequence
+from collections.abc import Sequence
+
+import streamlit as st
+from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
+
 
 class ChatState:
     messages: Sequence[BaseMessage]
+
 
 class ChatManager:
     def __init__(self):
@@ -27,12 +30,15 @@ class ChatManager:
 
     def export_messages(self):
         """Export messages as JSON."""
-        return json.dumps([
-            {"role": "human" if isinstance(m, HumanMessage) else "ai", "content": m.content}
-            for m in self.get_messages()
-        ], indent=2)
+        return json.dumps(
+            [
+                {"role": "human" if isinstance(m, HumanMessage) else "ai", "content": m.content}
+                for m in self.get_messages()
+            ],
+            indent=2,
+        )
 
     def clear_messages(self):
         """Clear all messages."""
         st.session_state.messages = []
-        self.messages = st.session_state.messages 
+        self.messages = st.session_state.messages

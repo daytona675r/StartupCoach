@@ -52,18 +52,19 @@ TRANSLATIONS = {
         "faq": "FAQ",
         "how_it_works": "Wie es funktioniert",
         "language_selector": "Sprache auswählen",
-    }
+    },
 }
+
 
 def get_text(key: str, lang: str = "en") -> str:
     """
     Get translated text for a given key and language.
-    
+
     Args:
         key (str): The translation key
         lang (str): The language code (default: "en")
-        
+
     Returns:
         str: The translated text
     """
-    return TRANSLATIONS.get(lang, TRANSLATIONS["en"]).get(key, key) 
+    return TRANSLATIONS.get(lang, TRANSLATIONS["en"]).get(key, key)
