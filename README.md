@@ -84,6 +84,15 @@ Canvas, pitch-deck structure and analytics. It performs no OpenAI call and
 reports example token/cost values. Real mode remains local/private and requires
 `OPENAI_API_KEY`.
 
+### Hosted demo
+
+The repository includes a Render Blueprint in [`render.yaml`](render.yaml)
+for the credential-free Streamlit demo. The owner must connect this repository
+to Render to obtain the live URL; the service runs with `DEMO_MODE=true`, uses
+the Streamlit health endpoint and never requires an OpenAI key. Run
+`scripts/demo_health_smoke.sh` locally before publishing. Until the Render
+service is connected, the live URL is intentionally not advertised here.
+
 ## 🏗️ Architecture
 
 The application is built using a modular architecture:

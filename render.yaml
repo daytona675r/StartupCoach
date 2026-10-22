@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: startupcoach-demo
+    runtime: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.address=0.0.0.0 --server.port="$PORT"
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
